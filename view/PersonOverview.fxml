@@ -78,8 +78,12 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="87.0" prefWidth="554.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleNewReservation" text="New Reservation" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="75.0" />
-                              <Button mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                              <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewReservation" text="New Reservation" AnchorPane.bottomAnchor="67.0" AnchorPane.rightAnchor="418.0" />
+                              <Button layoutX="388.0" layoutY="55.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="108.0" />
+                              <Button layoutX="222.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCheckIn" text="Check In" AnchorPane.bottomAnchor="67.0" AnchorPane.rightAnchor="260.0" />
+                              <Button layoutX="7.0" layoutY="55.0" mnemonicParsing="false" onAction="#handelCancelReservation" text="Cancel Reservation" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="410.0" />
+                              <Button layoutX="382.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleExtendDate" text="Extend date" AnchorPane.bottomAnchor="67.0" AnchorPane.rightAnchor="80.0" />
+                              <Button layoutX="217.0" layoutY="55.0" mnemonicParsing="false" onAction="#handCheckOut" text="Check Out" />
                            </children>
                         </AnchorPane>
                     </items>

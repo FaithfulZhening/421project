@@ -3,9 +3,18 @@ package g45.project;
 import java.io.IOException;
 import java.sql.*;
 
-
+import g45.project.model.CheckInData;
+import g45.project.model.CheckOutData;
+import g45.project.model.ExtendDateData;
 import g45.project.model.Person;
+import g45.project.model.Reservation;
+import g45.project.model.ReservationCancelData;
+import g45.project.view.CancelReservationController;
+import g45.project.view.CheckInDialogController;
+import g45.project.view.CheckOutDialogController;
+import g45.project.view.ExtendDateController;
 import g45.project.view.PersonOverviewController;
+import g45.project.view.ReservationEditDialogController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -70,6 +80,7 @@ public class MainApp extends Application {
         initRootLayout();
 
         showPersonOverview();
+
     }
 
     /**
@@ -113,6 +124,8 @@ public class MainApp extends Application {
         }
     }
 
+
+
     /**
      * Returns the main stage.
      * @return
@@ -135,4 +148,193 @@ public class MainApp extends Application {
 		return conn;
 	}
 
+    /**
+     * Opens a dialog to edit details for the specified person. If the user
+     * clicks OK, the changes are saved into the provided person object and true
+     * is returned.
+     *
+     * @param person the person object to be edited
+     * @return true if the user clicked OK, false otherwise.
+     */
+    public boolean showReservationEditDialog(Reservation reserv) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/ReservationEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Reservation");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //the mainapp receives the reservation from the controller and pass it to the controller
+            ReservationEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setReservation(reserv);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Opens a dialog to edit details for the specified person. If the user
+     * clicks OK, the changes are saved into the provided person object and true
+     * is returned.
+     *
+     * @param person the person object to be edited
+     * @return true if the user clicked OK, false otherwise.
+     */
+    public boolean showCheckInDialog(CheckInData checkInDetail) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/CheckInDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("CheckIn");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //the mainapp receives the reservation from the controller and pass it to the controller
+            CheckInDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setCheckInData(checkInDetail);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Opens a dialog to edit details for the specified person. If the user
+     * clicks OK, the changes are saved into the provided person object and true
+     * is returned.
+     *
+     * @param person the person object to be edited
+     * @return true if the user clicked OK, false otherwise.
+     */
+    public boolean showCancelReservationDialog(ReservationCancelData reservation) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/CancelReservationDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Cancel Reservation");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //the mainapp receives the reservation from the controller and pass it to the controller
+            CancelReservationController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setReservationData(reservation);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Opens a dialog to edit details for the specified person. If the user
+     * clicks OK, the changes are saved into the provided person object and true
+     * is returned.
+     *
+     * @param person the person object to be edited
+     * @return true if the user clicked OK, false otherwise.
+     */
+    public boolean showExtendDateDialog(ExtendDateData extendDate) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/ExtendDateDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Extend Date");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //the mainapp receives the reservation from the controller and pass it to the controller
+            ExtendDateController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setExtendDate(extendDate);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Opens a dialog to edit details for check out. If the user
+     * clicks OK, the changes are saved into the provided checkOutData and true
+     * is returned.
+     *
+     * @param person the person object to be edited
+     * @return true if the user clicked OK, false otherwise.
+     */
+    public boolean showCheckOutDialog(CheckOutData checkOutData) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/CheckOutDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Check out");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //the mainapp receives the reservation from the controller and pass it to the controller
+            CheckOutDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setCheckOutData(checkOutData);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
