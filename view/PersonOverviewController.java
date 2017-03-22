@@ -17,6 +17,7 @@ import g45.project.model.ExtendDateData;
 import g45.project.model.Person;
 import g45.project.model.Reservation;
 import g45.project.model.ReservationCancelData;
+import g45.project.model.RoomChangeData;
 
 public class PersonOverviewController {
     @FXML
@@ -268,6 +269,51 @@ public class PersonOverviewController {
         		Alert alert = new Alert(AlertType.WARNING);
                 alert.initOwner(mainApp.getPrimaryStage());
                 alert.setTitle("Check out");
+                alert.setHeaderText("Success!");
+                alert.setContentText(executeResult);
+                alert.showAndWait();
+        	}
+        }
+    }
+
+    /**
+     * Called when the user clicks the cancel reservation button. Opens a dialog to edit
+     * details for a reservation cancel.
+     * @throws SQLException
+     */
+    @FXML
+    private void handleRoomChange() throws SQLException {
+    	//create a new reservation and pass it to reservationEditDialog
+    	RoomChangeData tempData = new RoomChangeData();
+    	//the info needed is filled in the dialog
+        boolean okClicked = mainApp.showRoomChangeDialog(tempData);
+
+        // to be continued..
+        //
+        //
+        //
+        if (okClicked) {
+        	String executeResult = tempData.changeRoom();
+        	if (executeResult.compareTo("Invalid combination of room number and dates!") == 0){
+        		Alert alert = new Alert(AlertType.WARNING);
+                alert.initOwner(mainApp.getPrimaryStage());
+                alert.setTitle("Change Room");
+                alert.setHeaderText("Error");
+                alert.setContentText("Invalid combination of room number and dates!");
+                alert.showAndWait();
+        	}
+        	else if (executeResult.compareTo("No available room!")==0){
+        		Alert alert = new Alert(AlertType.WARNING);
+                alert.initOwner(mainApp.getPrimaryStage());
+                alert.setTitle("Change Room");
+                alert.setHeaderText("Error");
+                alert.setContentText("No available room!");
+                alert.showAndWait();
+        	}
+        	else{
+        		Alert alert = new Alert(AlertType.WARNING);
+                alert.initOwner(mainApp.getPrimaryStage());
+                alert.setTitle("Change Room");
                 alert.setHeaderText("Success!");
                 alert.setContentText(executeResult);
                 alert.showAndWait();

@@ -9,12 +9,14 @@ import g45.project.model.ExtendDateData;
 import g45.project.model.Person;
 import g45.project.model.Reservation;
 import g45.project.model.ReservationCancelData;
+import g45.project.model.RoomChangeData;
 import g45.project.view.CancelReservationController;
 import g45.project.view.CheckInDialogController;
 import g45.project.view.CheckOutDialogController;
 import g45.project.view.ExtendDateController;
 import g45.project.view.PersonOverviewController;
 import g45.project.view.ReservationEditDialogController;
+import g45.project.view.RoomChangeDialogController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -328,6 +330,43 @@ public class MainApp extends Application {
             controller.setDialogStage(dialogStage);
             controller.setCheckOutData(checkOutData);
 
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Opens a dialog to edit details for room change. If the user
+     * clicks OK, the changes are saved into the provided RoomChangeData and true
+     * is returned.
+     *
+     * @param person the person object to be edited
+     * @return true if the user clicked OK, false otherwise.
+     */
+    public boolean showRoomChangeDialog(RoomChangeData roomChangeData) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/RoomChangeDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Change Room");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //the mainapp receives the reservation from the controller and pass it to the controller
+            RoomChangeDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setRoomChangeData(roomChangeData);
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
 
