@@ -79,7 +79,7 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="87.0" prefWidth="554.0">
                            <children>
                               <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewReservation" text="New Reservation" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-                              <Button layoutX="344.0" layoutY="60.0" mnemonicParsing="false" text="Change Room" AnchorPane.leftAnchor="344.0" AnchorPane.topAnchor="60.0" />
+                              <Button layoutX="344.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleRoomChange" text="Change Room" AnchorPane.leftAnchor="344.0" AnchorPane.topAnchor="60.0" />
                               <Button layoutX="217.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleCheckIn" text="Check In" AnchorPane.leftAnchor="217.0" AnchorPane.topAnchor="20.0" />
                               <Button layoutX="20.0" layoutY="55.0" mnemonicParsing="false" onAction="#handelCancelReservation" text="Cancel Reservation" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="60.0" />
                               <Button layoutX="344.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleExtendDate" text="Extend date" AnchorPane.leftAnchor="344.0" AnchorPane.topAnchor="20.0" />

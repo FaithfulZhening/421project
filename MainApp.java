@@ -151,11 +151,11 @@ public class MainApp extends Application {
 	}
 
     /**
-     * Opens a dialog to edit details for the specified person. If the user
-     * clicks OK, the changes are saved into the provided person object and true
+     * Opens a dialog to edit a reservation. If the user
+     * clicks OK, the changes are saved into the provided reservation object and true
      * is returned.
      *
-     * @param person the person object to be edited
+     * @param reserv the Reservation object to be edited
      * @return true if the user clicked OK, false otherwise.
      */
     public boolean showReservationEditDialog(Reservation reserv) {
@@ -193,7 +193,7 @@ public class MainApp extends Application {
      * clicks OK, the changes are saved into the provided person object and true
      * is returned.
      *
-     * @param person the person object to be edited
+     * @param checkInDetail the CheckInData object to be edited
      * @return true if the user clicked OK, false otherwise.
      */
     public boolean showCheckInDialog(CheckInData checkInDetail) {
@@ -231,7 +231,7 @@ public class MainApp extends Application {
      * clicks OK, the changes are saved into the provided person object and true
      * is returned.
      *
-     * @param person the person object to be edited
+     * @param reservation the person object to be edited
      * @return true if the user clicked OK, false otherwise.
      */
     public boolean showCancelReservationDialog(ReservationCancelData reservation) {
@@ -265,11 +265,11 @@ public class MainApp extends Application {
     }
 
     /**
-     * Opens a dialog to edit details for the specified person. If the user
-     * clicks OK, the changes are saved into the provided person object and true
+     * Opens a dialog to edit details date extending. If the user
+     * clicks OK, the changes are saved into the provided ExtendDateData object and true
      * is returned.
      *
-     * @param person the person object to be edited
+     * @param extendDate the ExtendDateData object to be edited
      * @return true if the user clicked OK, false otherwise.
      */
     public boolean showExtendDateDialog(ExtendDateData extendDate) {
@@ -307,7 +307,7 @@ public class MainApp extends Application {
      * clicks OK, the changes are saved into the provided checkOutData and true
      * is returned.
      *
-     * @param person the person object to be edited
+     * @param checkOutData the CheckOutData to be edited
      * @return true if the user clicked OK, false otherwise.
      */
     public boolean showCheckOutDialog(CheckOutData checkOutData) {
@@ -345,7 +345,7 @@ public class MainApp extends Application {
      * clicks OK, the changes are saved into the provided RoomChangeData and true
      * is returned.
      *
-     * @param person the person object to be edited
+     * @param roomChangData the RoomChangeData to be edited
      * @return true if the user clicked OK, false otherwise.
      */
     public boolean showRoomChangeDialog(RoomChangeData roomChangeData) {
